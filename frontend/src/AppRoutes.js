@@ -17,6 +17,8 @@ import FoodsAdminPage from './pages/FoodsAdmin/FoodsAdminPage';
 import FoodEditPage from './pages/FoodEdit/FoodEditPage';
 import UsersPage from './pages/UsersPage/UsersPage';
 import UserEditPage from './pages/UserEdit/UserEditPage';
+import Cancel from './components/PaypalButtons/Cancel';
+import Success from './components/PaypalButtons/Success';
 
 export default function AppRoutes() {
   return (
@@ -41,6 +43,22 @@ export default function AppRoutes() {
         element={
           <AuthRoute>
             <PaymentPage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/success"
+        element={
+          <AuthRoute>
+            <Success />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/cancel"
+        element={
+          <AuthRoute>
+            <Cancel />
           </AuthRoute>
         }
       />

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Price from '../Price/Price';
-import StarRating from '../StarRating/StarRating';
 import classes from './thumbnails.module.css';
+
 export default function Thumbnails({ foods }) {
   return (
     <ul className={classes.list}>
@@ -16,16 +16,11 @@ export default function Thumbnails({ foods }) {
             />
 
             <div className={classes.content}>
-              <div className={classes.name}>{food.name}</div>
-              <span
-                className={`${classes.favorite} ${
-                  food.favorite ? '' : classes.not
-                }`}
-              >
-                ❤
-              </span>
-              <div className={classes.stars}>
-                <StarRating stars={food.stars} />
+              <div className={classes.nameAndPrice}>
+                <div className={classes.name}>{food.name}</div>
+                <div className={classes.price}>
+                  <Price price={food.price} />
+                </div>
               </div>
               <div className={classes.product_item_footer}>
                 <div className={classes.origins}>
@@ -33,13 +28,6 @@ export default function Thumbnails({ foods }) {
                     <span key={origin}>{origin}</span>
                   ))}
                 </div>
-                <div className={classes.cook_time}>
-                  <span>🕒</span>
-                  {food.cookTime}
-                </div>
-              </div>
-              <div className={classes.price}>
-                <Price price={food.price} />
               </div>
             </div>
           </Link>

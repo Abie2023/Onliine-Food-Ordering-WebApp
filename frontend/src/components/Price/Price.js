@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Price({ price, locale, currency }) {
+export default function Price({ price, currency }) {
   const formatPrice = () =>
-    new Intl.NumberFormat(locale, {
+    new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency,
     }).format(price);
@@ -11,6 +11,5 @@ export default function Price({ price, locale, currency }) {
 }
 
 Price.defaultProps = {
-  locale: 'en-IN',
   currency: 'INR',
 };

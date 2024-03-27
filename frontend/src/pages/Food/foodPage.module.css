@@ -12,12 +12,14 @@
 }
 
 .image {
-  border-radius: 3rem;
+  border-radius: 2rem;
   flex: 1 0;
   object-fit: cover;
-  height: 35rem;
+  width: 100%; 
+  height: calc(100% * 2 / 3); 
   margin: 1rem;
 }
+
 
 .details {
   width: 100%;
@@ -33,7 +35,9 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center; 
 }
+
 
 .name {
   font-size: 2rem;

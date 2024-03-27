@@ -1,71 +1,63 @@
-import {
-  PayPalButtons,
-  PayPalScriptProvider,
-  usePayPalScriptReducer,
-} from '@paypal/react-paypal-js';
-import React, { useEffect } from 'react';
-import { useLoading } from '../../hooks/useLoading';
-import { pay } from '../../services/orderService';
+import React from 'react';
 import { useCart } from '../../hooks/useCart';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import classes from './paypal.module.css'; 
+import { CardElement, useStripe, useElements, Elements } from '@stripe/react-stripe-js';
 
-export default function PaypalButtons({ order }) {
-  return (
-    <PayPalScriptProvider
-      options={{
-        clientId:
-          'AaHpALlREUg_gttoeAZAXVKPJdqTT-9W9b5lVhzSo1oDThWSCpoVODbajuuKMyolzWf-89gADBq4KdGL',
-      }}
-    >
-      <Buttons order={order} />
-    </PayPalScriptProvider>
-  );
-}
+const stripePromise = loadStripe('pk_test_51LZA4YSAVoSl4REK3FkMrJhcBqPqeb4MSwJUT5TSPQ7rOCBsfhnccVuZnYf8HuRifqPcXDvo4ohClcUZeBun4xgZ008GBRiATU');
 
-function Buttons({ order }) {
+const CheckoutForm = ({ order }) => {
   const { clearCart } = useCart();
   const navigate = useNavigate();
-  const [{ isPending }] = usePayPalScriptReducer();
-  const { showLoading, hideLoading } = useLoading();
-  useEffect(() => {
-    isPending ? showLoading() : hideLoading();
-  });
+  const stripe = useStripe();
+  const elements = useElements(); // Initialize elements
 
-  const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            currency_code: 'INR',
-            value: order.totalPrice,
-          },
-        },
-      ],
-    });
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const onApprove = async (data, actions) => {
+    if (!stripe || !elements) {
+      console.error('Stripe or Elements is not initialized');
+      return;
+    }
+
     try {
-      const payment = await actions.order.capture();
-      const orderId = await pay(payment.id);
-      clearCart();
-      toast.success('Payment Saved Successfully', 'Success');
-      navigate('/track/' + orderId);
+      const { error } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardElement),
+      });
+
+      if (error) {
+        console.error('Stripe error:', error);
+        toast.error(error.message, 'Error');
+      } else {
+        // Payment successful, clear cart and navigate to success page
+        clearCart();
+        navigate('/success');
+      }
     } catch (error) {
-      toast.error('Payment Save Failed', 'Error');
+      console.error('Payment error:', error);
+      toast.error('Payment Failed', 'Error');
+      // Payment failed, navigate to cancel page or handle error as needed
+      navigate('/cancel');
     }
   };
 
-  const onError = err => {
-    toast.error('Payment Failed', 'Error');
-  };
-
   return (
-    <PayPalButtons
-      createOrder={createOrder}
-      onApprove={onApprove}
-      onError={onError}
-    />
+    <form className={classes.paymentForm} onSubmit={handleSubmit}>
+      <CardElement className={classes.cardElement} />
+      <button type="submit" className={classes.submitButton}>
+        Pay with Stripe
+      </button>
+    </form>
+  );
+};
+
+export default function PaypalButtons({ order }) {
+  return (
+    <Elements stripe={stripePromise}>
+      <CheckoutForm order={order} />
+    </Elements>
   );
 }

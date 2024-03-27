@@ -1,0 +1,49 @@
+/* Styles for the form container */
+.paymentForm {
+  max-width: 400px; /* Adjust the maximum width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styles for the card element container */
+.cardElement {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styles for the labels */
+.label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* Styles for the submit button */
+.submitButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Styles for the loading indicator */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-text {
+  font-size: 18px;
+}
