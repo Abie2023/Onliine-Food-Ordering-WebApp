@@ -13,7 +13,8 @@ Innovative and dynamic tech to replace the traditional queue system for ordering
 - [Features](#features)
 - [Demo](#demo)
 - [Getting Started](#getting-started)
-- [Installation](#installation)
+- [Dependencies](#dependencies)
+- [Structure](#structure)
 - [Use Case](#use-case)
 
 ## About
