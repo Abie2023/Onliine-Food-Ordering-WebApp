@@ -20,10 +20,9 @@ Innovative and dynamic tech to replace the traditional queue system for ordering
 ## About
 Simplify, Save Time
 
-## Features
-
-
 ## Demo
+
+https://github.com/Abie2023/demo/assets/124857975/a4c7c6cc-67f7-4821-a3ff-fefd6468d1e1
 
 
 ## Getting Started
@@ -107,3 +106,5 @@ The project structure is organized as follows:
 - **src/routers**: Contains Express routers for defining API routes and endpoints.
 - **server.js**: Entry point for the backend server, where the server is initialized and started.
 
+### Use Case
+The project is not an end-to-end software, it is limited to be a food ordering web-app with some data analysis insights!
