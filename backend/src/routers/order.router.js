@@ -5,7 +5,6 @@ import { BAD_REQUEST } from '../constants/httpStatus.js';
 import { OrderModel } from '../models/order.model.js';
 import { OrderStatus } from '../constants/orderStatus.js';
 import { UserModel } from '../models/user.model.js';
-import { sendEmailReceipt } from '../helpers/mail.helper.js';
 
 const router = Router();
 router.use(auth);
@@ -41,8 +40,6 @@ router.put(
     order.paymentId = paymentId;
     order.status = OrderStatus.PAYED;
     await order.save();
-
-    sendEmailReceipt(order);
 
     res.send(order._id);
   })

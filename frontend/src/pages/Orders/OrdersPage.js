@@ -36,7 +36,7 @@ export default function OrdersPage() {
 
   return (
     <div className={classes.container}>
-      <Title title="Orders" margin="1.5rem 0 0 .2rem" fontSize="1.9rem" />
+      <Title title="Orders" margin="4rem 0 0 .2rem" fontSize="1.9rem" />
 
       {allStatus && (
         <div className={classes.all_status}>

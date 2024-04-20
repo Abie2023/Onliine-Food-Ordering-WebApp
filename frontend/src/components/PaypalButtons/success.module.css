@@ -1,0 +1,83 @@
+.successContainer {
+    background-color: rgba(35, 6, 6, 0.5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
+  }
+
+  h1{
+    color: #fff;
+    margin-bottom: 60px;
+  }
+  
+  .glassBox {
+    background: rgba(237, 225, 225, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(250, 248, 248, 0.3);
+    padding: 20px;
+    text-align: center;
+    width: 380px;
+    height: 450px;
+  }
+  
+  .linksContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .linksContainer a {
+    color: #fff; 
+    text-decoration: none;
+    margin-bottom: 20px; 
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 8px 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .linksContainer a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .linksContainer a:hover {
+    border-color: #fff;
+  }
+  
+  .linksContainer a:hover::before {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  
+  .card {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+  }
+  
+  .tickIcon {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .emoji {
+    font-size: 3rem; 
+  }

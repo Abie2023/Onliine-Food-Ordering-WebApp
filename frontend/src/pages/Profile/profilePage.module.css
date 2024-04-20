@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 
-.details {
-  width: 28rem;
+.details > div {
+  width: 100%;
 }

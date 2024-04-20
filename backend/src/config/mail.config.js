@@ -1,12 +1,10 @@
-import FormData from 'form-data';
-import Mailgun from 'mailgun.js';
+import mailjet from 'node-mailjet';
 
 export function getClient() {
-  const mailgun = new Mailgun(FormData);
-  const client = mailgun.client({
-    username: 'api',
-    key: process.env.MAILGUN_API_KEY,
-  });
+  const mailjetClient = mailjet.connect(
+    process.env.MAILJET_API_KEY,
+    process.env.MAILJET_API_SECRET
+  );
 
-  return client;
+  return mailjetClient;
 }

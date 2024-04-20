@@ -1,7 +1,10 @@
 .header {
-  background: white;
+  background: rgba(19, 19, 19, 0.2);
   padding: 0;
-  border-bottom: 1px solid #e72929;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .header a {
@@ -43,8 +46,9 @@
 .menu {
   position: absolute;
   z-index: 1001;
-  background-color: whitesmoke;
+  background-color: transparent;
   display: none;
+  border: 1px white;
 }
 
 .menu_container:hover .menu {

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import classes from './paypal.module.css'; 
 import { CardElement, useStripe, useElements, Elements } from '@stripe/react-stripe-js';
+import { pay, updateOrderStatus } from '../../services/orderService'; 
+import Title from '../Title/Title';
 
 const stripePromise = loadStripe('pk_test_51LZA4YSAVoSl4REK3FkMrJhcBqPqeb4MSwJUT5TSPQ7rOCBsfhnccVuZnYf8HuRifqPcXDvo4ohClcUZeBun4xgZ008GBRiATU');
 
@@ -12,7 +14,7 @@ const CheckoutForm = ({ order }) => {
   const { clearCart } = useCart();
   const navigate = useNavigate();
   const stripe = useStripe();
-  const elements = useElements(); // Initialize elements
+  const elements = useElements(); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +25,7 @@ const CheckoutForm = ({ order }) => {
     }
 
     try {
-      const { error } = await stripe.createPaymentMethod({
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
         card: elements.getElement(CardElement),
       });
@@ -32,14 +34,15 @@ const CheckoutForm = ({ order }) => {
         console.error('Stripe error:', error);
         toast.error(error.message, 'Error');
       } else {
-        // Payment successful, clear cart and navigate to success page
+        const orderId = await pay(paymentMethod.id); 
+        await updateOrderStatus(orderId, 'paid'); 
         clearCart();
+        toast.success('Payment Saved Successfully', 'Success');
         navigate('/success');
       }
     } catch (error) {
       console.error('Payment error:', error);
       toast.error('Payment Failed', 'Error');
-      // Payment failed, navigate to cancel page or handle error as needed
       navigate('/cancel');
     }
   };
@@ -56,8 +59,21 @@ const CheckoutForm = ({ order }) => {
 
 export default function PaypalButtons({ order }) {
   return (
+    <div className={classes.container}>
+  <div className={classes.title}>
+    <Title title="Enter Payment Details" fontSize="1.2rem"/>
+  </div>
+  <div className={classes.form}>
     <Elements stripe={stripePromise}>
       <CheckoutForm order={order} />
     </Elements>
+    <div className={classes.buttonGroup}>
+      <span className={classes.orText}>or</span>
+      <button className={classes.cash_button}>
+        Pay with Cash
+      </button>
+    </div>
+  </div>
+</div>
   );
 }

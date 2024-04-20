@@ -1,49 +1,59 @@
-/* Styles for the form container */
 .paymentForm {
-  max-width: 400px; /* Adjust the maximum width as needed */
+  width: 100%;
+  max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
-/* Styles for the card element container */
 .cardElement {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Styles for the labels */
-.label {
   display: block;
-  margin-bottom: 10px;
-  font-size: 18px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-/* Styles for the submit button */
 .submitButton {
-  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 20px;
+  width: 100%;
 }
 
-.submit-button:hover {
+.submitButton:hover {
   background-color: #0056b3;
 }
 
-/* Styles for the loading indicator */
-.loading-indicator {
+.buttonGroup {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin-top: 20px;
 }
 
-.loading-text {
-  font-size: 18px;
+.orText {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.cash_button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%;
+  max-width: 22rem;
+  margin-top: 1rem;
+}
+
+.cash_button:hover {
+  background-color: #218838;
 }

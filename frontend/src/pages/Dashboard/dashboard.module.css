@@ -1,35 +1,39 @@
 .container {
-  margin: auto;
-  margin-top: 1rem;
-  max-width: 70rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rem;
   width: 100%;
+  max-width: 80rem;
+  align-items: center;
 }
 
 .menu {
+  margin-top: 5rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start; 
-
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 4rem;
 }
 
 .menu a {
-  width: 12rem;
-  height: 6rem;
-  margin: 0.5rem 0; 
+  width: 9rem;
+  height: 4rem;
+  margin: 0rem 0;
   background-color: whitesmoke;
   box-shadow: 0 0 5px 1px;
   border-radius: 1rem;
   display: flex;
   align-items: center;
   color: #444444;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
-
 .menu img {
-  width: 4rem;
-  height: 4rem;
-  margin: 1rem;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.75rem;
 }
 
 .menu a:hover {
@@ -41,4 +45,43 @@
   margin-right: 2rem;
 }
 
+.chartContainer {
+  max-width: 20rem;
+  margin-right: 1rem;
+  margin-right: auto;
+}
 
+.messageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.messageBox {
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.messageBox p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.messageText {
+  max-width: 20rem; 
+  margin: 0 auto; 
+  line-height: 1.5; 
+}
+
+
+.safe {
+  background-color: #4caf50; 
+}
+
+.unsafe {
+  background-color: #f44336; 
+}

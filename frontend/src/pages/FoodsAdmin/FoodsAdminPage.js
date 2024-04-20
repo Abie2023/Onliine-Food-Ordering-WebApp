@@ -45,15 +45,17 @@ export default function FoodsAdminPage() {
     <div className={classes.container}>
       <div className={classes.list}>
         <Title title="Manage Foods" margin="1rem auto" />
-        <Search
-          searchRoute="/admin/foods/"
-          defaultRoute="/admin/foods"
-          margin="1rem 0"
-          placeholder="Search Foods"
-        />
-        <Link to="/admin/addFood" className={classes.add_food}>
-          Add Food +
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+      <Search
+        searchRoute="/admin/foods/"
+        defaultRoute="/admin/foods"
+        margin="1rem 0"
+        placeholder="Search Foods"
+      />
+      <Link to="/admin/addFood" className={classes.add_food}>
+        Add Food
+      </Link>
+    </div>
         <FoodsNotFound />
         {foods &&
           foods.map(food => (

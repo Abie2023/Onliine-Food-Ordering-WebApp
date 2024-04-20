@@ -1,8 +1,18 @@
+// orderService.js
+
 import axios from 'axios';
 
 export const createOrder = async order => {
   try {
     const { data } = axios.post('/api/orders/create', order);
+    return data;
+  } catch (error) {}
+};
+
+// Define and export updateOrderStatus function
+export const updateOrderStatus = async (orderId, status) => {
+  try {
+    const { data } = await axios.put(`/api/orders/${orderId}`, { status });
     return data;
   } catch (error) {}
 };

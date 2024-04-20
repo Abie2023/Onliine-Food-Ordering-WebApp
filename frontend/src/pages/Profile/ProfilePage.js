@@ -22,7 +22,9 @@ export default function ProfilePage() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.details}>
+  <div className={classes.details}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{marginRight: '10rem' }}>
         <Title title="Update Profile" />
         <form onSubmit={handleSubmit(submit)}>
           <Input
@@ -33,7 +35,7 @@ export default function ProfilePage() {
               required: true,
               minLength: 5,
             })}
-            error={errors.name}
+            style={{ width: '100rem' }}
           />
           <Input
             defaultValue={user.address}
@@ -44,13 +46,20 @@ export default function ProfilePage() {
               minLength: 10,
             })}
             error={errors.address}
+            style={{ width: '100%' }} 
           />
 
           <Button type="submit" text="Update" backgroundColor="#009e84" />
         </form>
-
+      </div>
+      <div style={{ maxWidth: '44rem' }}>
         <ChangePassword />
       </div>
     </div>
+  </div>
+</div>
+
+
+
   );
 }

@@ -3,20 +3,32 @@ import { getClient } from '../config/mail.config.js';
 export const sendEmailReceipt = function (order) {
   const mailClient = getClient();
 
-  mailClient.messages
-    .create('sandbox80bf0ab584cb42dbbf5cf0e9a249e188.mailgun.org', {
-      from: 'orders@foodmine.com',
-      to: order.user.email,
-      subject: `Order ${order.id} is being processed`,
-      html: getReceiptHtml(order),
-    })
-    .then(msg => console.log(msg)) //success
-    .catch(err => console.log(err)); //fail;
+  mailClient.post('send', { version: 'v3.1' }).request({
+    Messages: [
+      {
+        From: {
+          Email: 'abiekoshy07@outlook.com',
+        },
+        To: [
+          {
+            Email: order.user.email,
+          },
+        ],
+        Subject: `Order ${order.id} is being processed`,
+        HTMLPart: getReceiptHtml(order),
+      },
+    ],
+  })
+  .then((result) => {
+    console.log(result.body);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 };
 
 const getReceiptHtml = function (order) {
-  return `
-  <html>
+  return `<html>
     <head>
       <style>
       table {
@@ -76,7 +88,5 @@ const getReceiptHtml = function (order) {
           </table>
           <p><strong>Shipping Address:</strong> ${order.address}</p>
         </body>
-      </html>
-    
-    `;
+      </html>`;
 };
