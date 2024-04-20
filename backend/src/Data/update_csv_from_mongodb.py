@@ -8,7 +8,7 @@ orders_collection = db['orders']
 
 orders_data = orders_collection.find({})
 
-csv_file_path = 'C:\\Users\\ABIE\\Desktop\\Mern stack canteen\\backend\\src\\Data\\extract_data.csv'
+csv_file_path = '/Users/ABIE/Desktop/Mern stack canteen/backend/src/Data/extract_data.csv'
 
 fieldnames = ['_id', 'user_name', 'email', 'food_name', 'totalPrice', 'status', 'createdAt', 'updatedAt', 'paymentId', 'quantity']
 
@@ -17,7 +17,6 @@ with open(csv_file_path, 'w', newline='') as csvfile:
     writer.writeheader()
 
     for order in orders_data:
-        # Fetch user details from the users collection
         user_id = order.get('user')
         user_data = users_collection.find_one({'_id': user_id})
 
