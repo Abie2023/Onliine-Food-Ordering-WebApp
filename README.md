@@ -5,9 +5,6 @@ Innovative and dynamic tech to replace the traditional queue system for ordering
 
 ## Tagline: "Transforming Dining: Your College Canteen, Reinvented" 
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/your-username/your-repo.svg)](https://github.com/your-username/your-repo/issues)
-
 ## Table of Contents
 - [About](#about)
 - [Features](#features)
