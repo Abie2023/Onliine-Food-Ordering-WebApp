@@ -17,9 +17,6 @@ Innovative and dynamic tech to replace the traditional queue system for ordering
 ## About
 Simplify, Save Time
 
-## Demo
-
-https://github.com/Abie2023/demo/assets/124857975/a4c7c6cc-67f7-4821-a3ff-fefd6468d1e1
 
 
 ## Getting Started
